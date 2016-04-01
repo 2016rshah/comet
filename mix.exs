@@ -14,8 +14,8 @@ defmodule Commit.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :cowboy, :plug],
-     mod: {Commit, []}]
+    [applications: [:logger, :cowboy, :plug, :tentacat],
+     mod: {Commit.Api, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +30,8 @@ defmodule Commit.Mixfile do
   defp deps do
     [
 			{:cowboy, "~> 1.0.3"},
-			{:plug, "~> 1.0"}
+			{:plug, "~> 1.0"},
+			{:tentacat, "~> 0.2"}
 		]
   end
 end
