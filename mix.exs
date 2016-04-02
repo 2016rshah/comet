@@ -4,7 +4,7 @@ defmodule Commit.Mixfile do
   def project do
     [app: :comet,
      version: "0.0.1",
-     elixir: "~> 1.1",
+     elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -14,7 +14,7 @@ defmodule Commit.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :cowboy, :plug, :tentacat],
+    [applications: [:logger, :cowboy, :plug, :tentacat, :timex],
      mod: {Commit.Api, []}]
   end
 
@@ -31,7 +31,8 @@ defmodule Commit.Mixfile do
     [
 			{:cowboy, "~> 1.0.3"},
 			{:plug, "~> 1.0"},
-			{:tentacat, "~> 0.2"}
+			{:tentacat, "~> 0.2"},
+			{:timex, "~> 2.1.4"}
 		]
   end
 end
