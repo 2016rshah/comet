@@ -34,7 +34,7 @@ defmodule Commit.Controller do
 
 	def getLatestCommit(username) do
 
-		client = Tentacat.Client.new(%{access_token: "fa83a7a81ac96ab0a552c6cf471de8c08199592f"})
+		client = Tentacat.Client.new(%{access_token: Commit.Keys.github_key})
 		
 		repos = Tentacat.Repositories.list_users(username, client)
 		repoNames = Enum.map repos, &(Map.get &1, "name")
