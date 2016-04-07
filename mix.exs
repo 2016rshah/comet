@@ -32,7 +32,8 @@ defmodule Commit.Mixfile do
 			{:cowboy, "~> 1.0.3"},
 			{:plug, "~> 1.0"},
 			{:tentacat, "~> 0.2"},
-			{:timex, "~> 2.1.4"}
+			{:timex, "~> 2.1.4"},
+			{:poison, "~> 1.4.0"}
 		]
   end
 end
