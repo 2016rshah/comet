@@ -7,53 +7,28 @@ defmodule Commit.Controller do
 	plug :match
 	plug :dispatch
 
-	get "/" do
-		conn
-		|> send_resp(200, "ok")
-		|> halt
-	end
-
-	get "/helloworld" do
-		conn
-		|> send_resp(200, "hello world")
-		|> halt
-	end
-
-	def getDateStringFromCommit(c) do
-		# IO.puts "getDateStringFromCommit: "
-		# IO.inspect(c)
-		Map.get (Map.get (Map.get c, "commit"), "committer"), "date"
-	end
-
-	def sortByDates(commits) do
-		# IO.puts("sortByDates: ")
-		# IO.inspect(commits)
-		(Enum.sort_by commits, &(Timex.parse(getDateStringFromCommit(&1), "{ISO}")))
-		|> Enum.reverse
-	end
-
 	def getLatestCommit(username) do
-
 		client = Tentacat.Client.new(%{access_token: Commit.Keys.github_key})
-		
-		repos = Tentacat.Repositories.list_users(username, client)
-		repoNames = Enum.map repos, &(Map.get &1, "name")
-		# IO.inspect(repoNames)
-		repos_commits = Enum.map repoNames, &(Tentacat.Commits.list(username, &1, client))
-		#[[{commit}]]
-		# IO.inspect(repos_commits)
-		c = List.first(Enum.map repos_commits, &sortByDates/1)
-		IO.inspect(List.first(c))
-
-		"string"
-		#might be able to pattern match stuff like this:
-		#http://elixir-lang.org/getting-started/keywords-and-maps.html#maps
+		[repo | repos] = Tentacat.Repositories.list_users(username, client, [sort: "pushed"])
+		repoName = Map.get repo, "name"
+		[commit | commits] = Tentacat.Commits.list(username, repoName, client)
+		commitMessage = (Map.get (Map.get commit, "commit"), "message")
+		{commitMessage, repoName}
 	end
 
-	get "username/:name" do
-		commit = getLatestCommit(name)
+	get "/" do
+		conn |> send_resp(200, "Welcome to Comet, where you can GET your latest github commit") |> halt
+	end
+
+	get "/favicon.ico" do
+		conn |> send_resp(404, "Not found") |> halt
+	end
+
+	get "/:name" do
+		{message, repo} = getLatestCommit(name)
+		IO.puts(repo)
 		conn
-		|> send_resp(200, "Hello there #{commit}")
+		|> send_resp(200, message)
 		|> halt
 	end
 	
