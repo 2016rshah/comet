@@ -3,7 +3,8 @@ defmodule Commit.Web do
 	def portNumber do
 		p = System.get_env("PORT")
 		if p do
-			Integer.parse p 
+			{p, _} = Integer.parse p 
+			p 
 		else
 			4000
 		end
