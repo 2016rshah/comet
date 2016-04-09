@@ -3,9 +3,9 @@ defmodule Commit.Web do
 	def portNumber do
 		p = System.get_env("PORT")
 		if p do
-			p 
+			Integer.parse p 
 		else
-			443
+			4000
 		end
 	end
 
