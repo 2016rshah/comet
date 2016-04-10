@@ -33,7 +33,8 @@ defmodule Commit.Mixfile do
 			{:plug, "~> 1.0"},
 			{:tentacat, "~> 0.2"},
 			{:timex, "~> 2.1.4"},
-			{:poison, "~> 1.4.0"}
+			{:poison, "~> 1.4.0"},
+			{:plug_cors, "~> 0.7.3"}
 		]
   end
 end

@@ -3,6 +3,7 @@ defmodule Commit.Controller do
 	use Timex
 	require Logger
 
+	plug PlugCors
 	plug Plug.Logger
 	plug :match
 	plug :dispatch
