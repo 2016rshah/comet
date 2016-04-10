@@ -12,7 +12,7 @@ There are two main endpoints:
 
 Let's say you store the response of `/json/:username` into a variable `x`. You will probably be interested in `x.commit.message` (for the commit message), `x.commit.committer.date` (for the date the commit was made), and `x.html_url` (for a link to the commit on github). 
 
-# 
+[This](https://github.com/2016rshah/comet/blob/master/index.html) is a very simple example that will generate [this page](http://rshah.org/comet).
 
 #Colophon
  - [This blog post](http://www.jarredtrost.com/2015/05/30/getting-started-with-elixir-plug-routes/) which helped with JSON encoding/decoding in the server
