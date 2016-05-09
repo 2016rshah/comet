@@ -2,17 +2,16 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
     <style>
+      @import url(https://fonts.googleapis.com/css?family=Lato);
       body{
         text-align:center;
-      }
-      #commit{
-        font-size:40px;
+        font-family: 'Lato', sans-serif;
       }
     </style>
   </head>
   <body>
     <h1><a href="https://github.com/2016rshah" id="link"><span id="username">2016rshah</span></a>'s Latest Commit Was:</h1>
-    <a id="commit"></a>
+    <h2><a id="commit"></a></h2>
     <script>
       var defaultUserName = "2016rshah";//you're welcome, rushi
       var user = document.URL.split("#")[1] || defaultUserName;
