@@ -11,12 +11,17 @@
     </style>
   </head>
   <body>
-    <h1><a href="https://github.com/2016rshah">2016rshah</a>'s Latest Commit Was:</h1>
+    <h1><a href="https://github.com/2016rshah" id="link"><span id="username">2016rshah</span></a>'s Latest Commit Was:</h1>
     <a id="commit"></a>
     <script>
-      $.getJSON('http://comet.rshah.org/json/2016rshah', function(data) {
+      var defaultUserName = "2016rshah";//you're welcome, rushi
+      var user = document.URL.split("#")[1] || defaultUserName;
+      document.getElementById('link').href = "https://github.com/" + user;
+      document.getElementById('username').firstChild.data = user;
+
+      $.getJSON('http://comet.rshah.org/json/' + user, function(data) {
         $("#commit").text(data.commit.message);
-        $("#commit").attr("href", data.html_url)
+        $("#commit").attr("href", data.html_url);
       });
     </script>
   </body>
