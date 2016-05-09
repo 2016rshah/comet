@@ -1,8 +1,17 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <style>
+      body{
+        text-align:center;
+      }
+      #commit{
+        font-size:40px;
+      }
+    </style>
   </head>
   <body>
+    <h1><a href="https://github.com/2016rshah">2016rshah</a>'s Latest Commit Was:</h1>
     <a id="commit"></a>
     <script>
       $.getJSON('http://comet.rshah.org/json/2016rshah', function(data) {
