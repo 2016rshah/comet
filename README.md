@@ -14,6 +14,8 @@ Let's say you store the response of `/json/:username` into a variable `x`. You w
 
 [This](https://github.com/2016rshah/comet/blob/master/index.html) is a very simple example that will generate [this page](http://rshah.org/comet).
 
+You can also get your minimally styled page @ `[http://rshah.org/comet/index.html#<YOUR_USERNAME_HERE>](http://rshah.org/comet/index.html#2016rshah)`
+
 #Colophon
  - [This blog post](http://www.jarredtrost.com/2015/05/30/getting-started-with-elixir-plug-routes/) which helped with JSON encoding/decoding in the server
  - [This blog post](http://blog.simonstrom.xyz/elixir-a-simple-server-with-plug/) for an intro into using the Plug Router
