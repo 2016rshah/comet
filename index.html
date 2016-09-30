@@ -21,7 +21,9 @@
       $.getJSON('http://comet.rshah.org/json/' + user, function(data) {
         $("#commit").text(data.commit.message);
         $("#commit").attr("href", data.html_url);
-      });
+      }).fail(function(event, jqxhr, exception) {
+          $("#commit").text("Oops, this user has never committed to any of their own repos");
+      })
     </script>
   </body>
 </html>
